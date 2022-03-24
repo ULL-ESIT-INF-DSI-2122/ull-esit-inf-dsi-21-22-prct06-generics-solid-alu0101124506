@@ -1,0 +1,1 @@
+{"processes":{"1a87b6f2-49b6-4842-9d3d-bd08c8430361":{"parent":"d7e1a991-cfae-4044-963e-632c9b287a03","children":[]},"d7e1a991-cfae-4044-963e-632c9b287a03":{"parent":null,"children":["1a87b6f2-49b6-4842-9d3d-bd08c8430361"]}},"files":{"/home/usuario/practicas/p6/src/rational.ts":["1a87b6f2-49b6-4842-9d3d-bd08c8430361"]},"externalIds":{}}
