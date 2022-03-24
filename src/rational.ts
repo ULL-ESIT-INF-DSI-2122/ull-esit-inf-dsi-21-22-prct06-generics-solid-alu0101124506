@@ -1,6 +1,20 @@
 import {Arithmeticable} from '../src/arithmeticable';
 
+/**
+ * Rational
+ * 
+ * @author Micaela Lucia Mungay Juncal
+ * 
+ */
+
+ /**  @class clase en la cual se implementa la interface Arithmeticable para valores racionales*/
 export class Rational implements Arithmeticable<Rational>{
+
+
+   /**
+    * @param numerator numerador del racional
+    * @param denominator denominador del racional
+    */
 
     private numerator: number;
     private denominator: number;
@@ -10,6 +24,7 @@ export class Rational implements Arithmeticable<Rational>{
       this.denominator = denominator;
     }
   
+    /** @function add implementada de la interface, donde sumamos dos numeros racionales */
     add(valueB: Rational): Rational {
       return new Rational(
         this.numerator * valueB.denominator + valueB.numerator * this.denominator,
@@ -17,6 +32,7 @@ export class Rational implements Arithmeticable<Rational>{
       );
     }     
   
+    /** @function substract implementada de la interface, donde restamos dos numeros racionales */
     substract(valueB: Rational): Rational {
       return new Rational(
         this.numerator * valueB.denominator - valueB.numerator * this.denominator,
@@ -24,6 +40,7 @@ export class Rational implements Arithmeticable<Rational>{
       );
     }       
   
+    /** @function multiply implementada de la interface, donde multiplicamos dos numeros racionales */
     multiply(valueB: Rational): Rational {
       return new Rational(
         this.numerator * valueB.numerator,
@@ -31,6 +48,7 @@ export class Rational implements Arithmeticable<Rational>{
       );
     }
 
+    /** @function divide implementada de la interface, donde dividimos dos numeros racionales */
     divide(valueB: Rational): Rational {
       return new Rational(
         this.numerator * valueB.denominator,
@@ -38,11 +56,3 @@ export class Rational implements Arithmeticable<Rational>{
       );     
     }
 }
-
-let myRational = new Rational(1, 2);
-let myRationalB = new Rational(3, 4);
-
-console.log(myRational.add(myRationalB));
-console.log(myRational.substract(myRationalB));
-console.log(myRational.multiply(myRationalB));
-console.log(myRational.divide(myRationalB));

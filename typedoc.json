@@ -1,6 +1,7 @@
 {
     "entryPoints": [
-        "./src/test.ts"
+        "./src/rational.ts",
+        "./src/arithmeticable.ts"
  
     ],
     "out": "./docs"
