@@ -1,3 +1,5 @@
+import {Arithmeticable} from '../src/arithmeticable';
+
 class Complex implements Arithmeticable<number> {
     private valueA: number;
     constructor(value: number){

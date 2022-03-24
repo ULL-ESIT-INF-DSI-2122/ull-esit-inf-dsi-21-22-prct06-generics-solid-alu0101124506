@@ -1,4 +1,4 @@
-interface Arithmeticable<T> {
+export interface Arithmeticable<T> {
 
     add(valueB: T): T;
     substract(valueB: T): T;

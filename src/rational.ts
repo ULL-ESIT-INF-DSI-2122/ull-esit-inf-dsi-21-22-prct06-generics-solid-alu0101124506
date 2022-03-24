@@ -1,3 +1,5 @@
+import {Arithmeticable} from '../src/arithmeticable';
+
 export class Rational implements Arithmeticable<Rational>{
 
     private numerator: number;
