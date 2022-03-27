@@ -10,7 +10,7 @@ let listaDocumental = new Documentales([{title: 'El Gran Hackeo', year: 2019, ge
 let listaPeliculas = new Peliculas([{title: 'Constantine', year: 2005, genre: 'Fantasia', reviews: 7.0}]);
 let newMovie = {title: 'Avengers: Endgame', year: 2019, genre: 'Drama', reviews: 8.4};
 
-describe('Comprobamos las clases del ejercicio 3', () => {
+describe('Comprobamos la clase Pelicula', () => {
 
   it('Se puede añadir una pelicula nueva', () => {
     listaPeliculas.addElement(newMovie);
@@ -44,7 +44,9 @@ describe('Comprobamos las clases del ejercicio 3', () => {
     expect(listaPeliculas.buscar('dinero', 'accion')).to.deep.
         equal([]);
   });
+});
 
+describe('Comprobamos la clase Serie', () => {
   it('Se puede buscar una serie por nombre', () => {
     expect(listaSeries.buscar('title', 'Legends of Tomorrow')).to.deep.
         equal([newShow]);
@@ -69,7 +71,9 @@ describe('Comprobamos las clases del ejercicio 3', () => {
     expect(listaSeries.buscar('reviews', '8.3')).to.deep.
         equal([{title: 'La Casa de Papel', year: 2017, season: 5, genre: 'Crimen', reviews: 8.3}]);
   });
+});
 
+describe('Comprobamos la clase Serie', () => {
   it('Se puede buscar un documental por duration', () => {
     expect(listaDocumental.buscar('duration', '113')).to.deep.
         equal([{title: 'El Gran Hackeo', year: 2019, genre: 'Tecnologia',
