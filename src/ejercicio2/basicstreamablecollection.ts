@@ -1,4 +1,4 @@
-import {StremeableSearch} from './stremeablesearch';
+import {StremeableSearch} from './streamablesearch';
 /**
  * Clase que define una coleccion stremeable y con posibilidad de busqueda
  */

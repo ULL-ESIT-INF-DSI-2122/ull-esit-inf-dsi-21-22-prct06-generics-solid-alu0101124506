@@ -1,7 +1,19 @@
 {
     "entryPoints": [
         "./src/rational.ts",
-        "./src/arithmeticable.ts"
+        "./src/arithmeticable.ts",
+        "./src/ejercicio1/combat.ts",
+        "./src/ejercicio1/dragonball.ts",
+        "./src/ejercicio1/fighter.ts",
+        "./src/ejercicio1/fighterdex.ts",
+        "./src/ejercicio1/pokemon.ts",
+        "./src/ejercicio1/marvel.ts",
+        "./src/ejercicio1/starwars.ts",
+        "./src/ejercicio2/basicstreamablecollection.ts",
+        "./src/ejercicio2/documental.ts",
+        "./src/ejercicio2/pelicula.ts",
+        "./src/ejercicio2/streamable.ts",
+        "./src/ejercicio2/streamablesearch.ts"
  
     ],
     "out": "./docs"

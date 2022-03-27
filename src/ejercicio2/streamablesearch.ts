@@ -1,4 +1,4 @@
-import {Stremeable} from './stremeable';
+import {Stremeable} from './streamable';
 /**
  * Interfaz StremeableSearch
  * Esta interfaz extiende Stremeable para cumplir el principio S de SOLID
