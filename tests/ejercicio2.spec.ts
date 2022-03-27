@@ -73,7 +73,7 @@ describe('Comprobamos la clase Serie', () => {
   });
 });
 
-describe('Comprobamos la clase Serie', () => {
+describe('Comprobamos la clase Documental', () => {
   it('Se puede buscar un documental por duration', () => {
     expect(listaDocumental.buscar('duration', '113')).to.deep.
         equal([{title: 'El Gran Hackeo', year: 2019, genre: 'Tecnologia',
