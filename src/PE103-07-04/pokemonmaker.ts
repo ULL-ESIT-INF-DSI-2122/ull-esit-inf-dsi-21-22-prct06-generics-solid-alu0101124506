@@ -5,6 +5,7 @@ import { GrassPokemon } from './grasspokemon';
 import {BasicPokemon, Pokemon} from './pokemon';
 
 export class PokemonMaker extends BasicPokemon {
+    
 
     /** @param name El nombre del pokemon
     * @param weight Peso del pokemon
