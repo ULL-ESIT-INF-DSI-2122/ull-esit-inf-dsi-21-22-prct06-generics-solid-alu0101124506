@@ -462,3 +462,300 @@ export class Fighterdex {
   }
 };
 ```
+
+
+
+### Ejercicio 2 - DSIflix
+
+Comenzamos creando una interfaz 'Stremeable' de tipo generica, la cual usaremos simplemente como base de datos
+
+````
+/**
+ * Interfaz Stremeable
+ */
+ export interface Stremeable<T> {
+    addElement(nuevoElemento: T): void;
+    getElementos(): T[];
+}
+````
+
+Luego para seguir con los principios SOLID creamos otra interfaz llamada 'StremeableSearch' la cual extiende de la anterior interaz y tambien es de tipo generica. 
+En esta interfaz para lo que la utilizamos es para realizar busquedas dentro de la interfaz 'Stremeable'
+
+````
+import {Stremeable} from './streamable';
+/**
+ * Interfaz StremeableSearch
+ * Esta interfaz extiende Stremeable para cumplir el principio S de SOLID
+ */
+export interface StremeableSearch<T> extends Stremeable<T> {
+  buscar(parametro: string, valor: string): T[];
+}
+````
+
+
+A continuacion, creamos la clase abstracta 'BasicStreamableCollection' la cual tendra definidas las funcionalidades basicas de una coleccion, es por esto, que esta clase implementa la interfaz 'StremeableSearch' y es de tipo generica.
+
+````
+import {StremeableSearch} from './streamablesearch';
+/**
+ * Clase que define una coleccion stremeable y con posibilidad de busqueda
+ */
+export abstract class BasicStreamableCollection<T> implements
+  StremeableSearch<T> {
+  /**
+   * Constructor de la clase
+   * @param lista Lista que compone la coleccion
+   */
+  constructor(protected lista: T[]) {};
+  /**
+   * Metodo para añadir elemento a la coleccion
+   * @param nuevoElemento Elemento a añadir
+   */
+  addElement(nuevoElemento: T) {
+    this.lista.push(nuevoElemento);
+  }
+  /**
+   * Getter. Debería devolver la lista de la coleccion
+   */
+  abstract getElementos(): T[];
+
+  /**
+   * Metodo de busqueda. Debería buscar los elementos de la coleccion que
+   * tengan el valor buscado dentro de una categoria
+   * @param parametro Categoria a buscar
+   * @param valor Valor a buscar
+   */
+  abstract buscar(parametro: string, valor: string): T[];
+}
+````
+
+
+Ahora comenzamos a crear sub-clases, las cuales se extienden de la clase explicada anteriormente.
+
+Primero tenemos la clase 'Documental', la cual contendra lo basico para describir un documental, como puede ser su titulo, la duracion, el genero y el año de la misma.
+
+````
+import {BasicStreamableCollection} from './basicstreamablecollection';
+/**
+ * Tipo de dato que contiene los datos de una serie
+ */
+export type documental = {
+  title: string;
+  year: number;
+  genre: string;
+  duration: number;
+}
+/**
+ * Clase para representar a las documentales
+ * */
+export class Documentales extends BasicStreamableCollection<documental> {
+  /**
+   * Constructor de la clase que representa documentales
+   * @param documentales Lista de documentales
+   */
+  constructor(private documentales: documental[]) {
+    super(documentales);
+  }
+  /**
+   * Getter para el array de documentales
+   * @returns Array de documentales
+   */
+  getElementos() {
+    return this.documentales;
+  }
+  /**
+   * Funcion para buscar una serie en base a un parametro
+   * @param parametro Parametro a buscar: title, year, etc.
+   * @param valor Valor de ese parametro
+   * @returns Array con las documentales que coinciden
+   */
+  buscar(parametro: string, valor: string): documental[] {
+    let resultado: documental[] = [];
+    switch (parametro) {
+      case ('title'):
+        resultado = this.getElementos().filter((x) => (x.title == valor));
+        break;
+      case ('year'):
+        resultado = this.getElementos().filter((x) => (x.year == +valor));
+        break;
+      case ('genre'):
+        resultado = this.getElementos().filter((x) => (x.genre == valor));
+        break;
+      case ('duration'):
+        resultado = this.getElementos().filter((x) =>
+          (x.duration == +valor));
+        break;
+      default:
+        console.log('Lo sentimos, no hemos encontrado nada');
+    }
+    return resultado;
+  }
+}
+````
+
+
+Tenemos la clase 'Series', la cual contendra lo basico para describir una serie, como puede ser su titulo, la duracion, el genero, el año de estreno, numero de temporadas, y las opiniones del publico.
+
+````
+import {BasicStreamableCollection} from './basicstreamablecollection';
+/**
+ * Tipo de dato que contiene los datos de una serie
+ */
+export type serie = {
+  title: string;
+  year: number;
+  season: number;
+  genre: string;
+  reviews: number;
+}
+/**
+ * Clase para representar a las series
+ * */
+export class Series extends BasicStreamableCollection<serie> {
+  /**
+   * Constructor de la clase que representa Series
+   * @param series Lista de series
+   */
+  constructor(private series: serie[]) {
+    super(series);
+  }
+  /**
+   * Getter para el array de series
+   * @returns Array de series
+   */
+  getElementos() {
+    return this.series;
+  }
+  /**
+   * Funcion para buscar una serie en base a un parametro
+   * @param parametro Parametro a buscar: title, year, etc.
+   * @param valor Valor de ese parametro
+   * @returns Array con las series que coinciden
+   */
+  buscar(parametro: string, valor: string): serie[] {
+    let resultado: serie[] = [];
+    switch (parametro) {
+      case ('title'):
+        resultado = this.getElementos().filter((x) => (x.title == valor));
+        break;
+      case ('year'):
+        resultado = this.getElementos().filter((x) => (x.year == +valor));
+        break;
+      case ('season'):
+        resultado = this.getElementos().filter((x) => (x.season == +valor));
+        break;
+      case ('genre'):
+        resultado = this.getElementos().filter((x) => (x.genre == valor));
+        break;
+      case ('reviews'):
+        resultado = this.getElementos().filter((x) =>
+          (x.reviews == +valor));
+        break;
+      default:
+        console.log('Lo sentimos, no hemos encontrado nada');
+    }
+    return resultado;
+  }
+}
+````
+
+
+Por ultimo, tenemos la clase 'Peliculas', la cual contendra lo basico para describir una pelicula, como puede ser su titulo, el genero, el año de estreno, y las opiniones del publico.
+
+````
+import {BasicStreamableCollection} from './basicstreamablecollection';
+/**
+ * Tipo de dato que contiene los datos de una serie
+ */
+export type pelicula = {
+  title: string;
+  year: number;
+  genre: string;
+  reviews: number;
+}
+/**
+ * Clase para representar a las peliculas
+ * */
+export class Peliculas extends BasicStreamableCollection<pelicula> {
+  /**
+   * Constructor de la clase que representa peliculas
+   * @param peliculas Lista de peliculas
+   */
+  constructor(private peliculas: pelicula[]) {
+    super(peliculas);
+  }
+  /**
+   * Getter para el array de peliculas
+   * @returns Array de peliculas
+   */
+  getElementos() {
+    return this.peliculas;
+  }
+  /**
+   * Funcion para buscar una serie en base a un parametro
+   * @param parametro Parametro a buscar: title, year, etc.
+   * @param valor Valor de ese parametro
+   * @returns Array con las peliculas que coinciden
+   */
+  buscar(parametro: string, valor: string): pelicula[] {
+    let resultado: pelicula[] = [];
+    switch (parametro) {
+      case ('title'):
+        resultado = this.getElementos().filter((x) => (x.title == valor));
+        break;
+      case ('year'):
+        resultado = this.getElementos().filter((x) => (x.year == +valor));
+        break;
+      case ('genre'):
+        resultado = this.getElementos().filter((x) => (x.genre == valor));
+        break;
+      case ('reviews'):
+        resultado = this.getElementos().filter((x) =>
+          (x.reviews == +valor));
+        break;
+      default:
+        console.log('Lo sentimos, no hemos encontrado nada');
+    }
+    return resultado;
+  }
+}
+````
+
+Cada sub-clase tiene su propio tipo, para poder describir cada objeto de la clase.
+
+Clase 'Documental' tiene el siguiente tipo propio que utiliza:
+
+````
+export type documental = {
+  title: string;
+  year: number;
+  genre: string;
+  duration: number;
+}
+````
+
+
+Clase 'Series' tiene el siguiente tipo propio que utiliza:
+
+````
+export type serie = {
+  title: string;
+  year: number;
+  season: number;
+  genre: string;
+  reviews: number;
+}
+````
+
+
+Clase 'Peliculas' tiene el siguiente tipo propio que utiliza:
+
+````
+export type pelicula = {
+  title: string;
+  year: number;
+  genre: string;
+  reviews: number;
+}
+````
