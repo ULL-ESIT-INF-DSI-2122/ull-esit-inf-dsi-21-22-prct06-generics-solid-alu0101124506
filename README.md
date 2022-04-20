@@ -13,3 +13,6 @@
 
 Esta practica tiene como objetivo familiarizarlos con los principios SOLID tanto como con las herramientas Instanbull y Coveralls.
 
+- Para acceder al informe de la practica: https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct06-generics-solid-alu0101124506/blob/master/index.md
+- Para acceder al informe de la practica a traves de GitHub Pages: https://ull-esit-inf-dsi-2122.github.io/ull-esit-inf-dsi-21-22-prct06-generics-solid-alu0101124506/
+
